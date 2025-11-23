@@ -4,6 +4,7 @@
    To interface and toggle the led with ARM LPC 1768 microprocessor           
            
 # COMPONENTS REQUIRED:
+
 ##  HARDWARE:
 ARM LPC1768
 LED
@@ -42,16 +43,53 @@ Header:
 Delay.h, stdutils.h, gpioi.h
 
 # PIN DIAGRAM :
- 
+<img width="619" height="369" alt="image" src="https://github.com/user-attachments/assets/c5f6a46d-70a4-4a62-a838-6a46fed2a341" />
+
 
 # CIRCUIT DIAGRAM:
+<img width="1071" height="542" alt="image" src="https://github.com/user-attachments/assets/1a4ee3bf-370f-4037-ac49-66cb755f1b25" />
+
  
  
 # PROGRAM:
-
-
+```
+#include <lpc17xx.h>
+#include "pwm.h"
+#include "delay.h"
+#define CYCLE_TIME 100
+/* start the main program */
+int main()
+{
+int dutyCycle;
+SystemInit(); /* Clock and PLL configuration */
+PWM_Init(CYCLE_TIME); /* Initialize the PWM module and the Cycle time(Ton+Toff) is
+set to 255(similar to arduino)*/
+PWM_Start(PWM_3); /* Enable PWM output on PWM_1-PWM_4 (P2_0 - P2_3) */
+while(1)
+{
+for(dutyCycle=0;dutyCycle<CYCLE_TIME;dutyCycle++) /* Increase the Brightness of the
+Leds */
+{
+PWM_SetDutyCycle(PWM_3,dutyCycle); //P2_2
+DELAY_ms(10);
+}
+17
+for(dutyCycle=CYCLE_TIME;dutyCycle>0;dutyCycle--) /* Decrease the Brightness of the
+Leds */
+{
+PWM_SetDutyCycle(PWM_3,dutyCycle); //P2_2
+DELAY_ms(10);
+}
+}
+}
+```
  
 # Output:
+<img width="638" height="462" alt="image" src="https://github.com/user-attachments/assets/70bf4015-ba5e-457c-a318-cb38b6fa8947" />
+
+# Result:
+Thus,an embedded C program is written in order to interface PWM with LPC1768.
+
 
 
 
