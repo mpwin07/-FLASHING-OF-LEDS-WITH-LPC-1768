@@ -89,27 +89,23 @@ Delay.h, stdutils.h, gpioi.h
 #include "pwm.h"
 #include "delay.h"
 #define CYCLE_TIME 100
-/* start the main program */
 int main()
 {
 int dutyCycle;
-SystemInit(); /* Clock and PLL configuration */
-PWM_Init(CYCLE_TIME); /* Initialize the PWM module and the Cycle time(Ton+Toff) is
-set to 255(similar to arduino)*/
-PWM_Start(PWM_3); /* Enable PWM output on PWM_1-PWM_4 (P2_0 - P2_3) */
+SystemInit(); 
+PWM_Init(CYCLE_TIME);
+PWM_Start(PWM_3);
 while(1)
 {
-for(dutyCycle=0;dutyCycle<CYCLE_TIME;dutyCycle++) /* Increase the Brightness of the
-Leds */
+for(dutyCycle=0;dutyCycle<CYCLE_TIME;dutyCycle++) 
 {
 PWM_SetDutyCycle(PWM_3,dutyCycle); //P2_2
 DELAY_ms(10);
 }
 17
-for(dutyCycle=CYCLE_TIME;dutyCycle>0;dutyCycle--) /* Decrease the Brightness of the
-Leds */
+for(dutyCycle=CYCLE_TIME;dutyCycle>0;dutyCycle--) 
 {
-PWM_SetDutyCycle(PWM_3,dutyCycle); //P2_2
+PWM_SetDutyCycle(PWM_3,dutyCycle); 
 DELAY_ms(10);
 }
 }
