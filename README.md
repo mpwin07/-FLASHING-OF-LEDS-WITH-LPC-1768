@@ -15,6 +15,8 @@ KEIL MICRO VISION 4.0 IDE
 
 
 ⮚	Open the Keil software and select the New uvision project from Project Menu as shown below.
+
+
 ⮚	Browse to your project folder and provide the project name and click on save.
 ⮚	Once the project is saved a new pop up “Select Device for Target” opens, Select the controller (NXP: LPC1768) from NXP (founded by philips) and click on OK.
 ⮚	Select the controller (NXP: LPC1768) and click on OK.
